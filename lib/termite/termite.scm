@@ -39,10 +39,7 @@
 
 ;; TODO Improve this
 (define (formatted-current-time)
-  (let* ((port ((let () (##namespace ("" open-process)) open-process) "date"))
-     (time (read-line port)))
-  (close-port port)
-  time))
+  (with-input-from-process "date" read-line))
 
 ;; ----------------------------------------------------------------------------
 ;; Datatypes
